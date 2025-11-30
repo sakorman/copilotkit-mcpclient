@@ -53,7 +53,7 @@ async function chat_node(state: AgentState, config: RunnableConfig) {
     latestMcpConfig = mcpConfig;
 
     // 设置环境变量时，把当前进程的环境变量也传递过去
-    let newMcpConfig: any = {};
+    const newMcpConfig: any = {};
     Object.keys(mcpConfig).forEach((key) => {
       newMcpConfig[key] = { ...mcpConfig[key] };
       if (newMcpConfig[key].env) {
@@ -82,11 +82,11 @@ async function chat_node(state: AgentState, config: RunnableConfig) {
 
   // 4 Create the React agent width model and tools
   const agent = createReactAgent({
-    llm: model,
+    llm: model, // 初始化的大模型
     tools: [
-      ...getDefaultTools(),
-      ...convertActionsToDynamicStructuredTools(state.copilotkit.actions),
-      ...mcpTools,
+      ...getDefaultTools(), // 内置工具
+      ...convertActionsToDynamicStructuredTools(state.copilotkit.actions), // CopilotKit动作
+      ...mcpTools, // MCP服务工具
     ],
   });
 
