@@ -1,0 +1,50 @@
+{
+  "name": "copilotkit-mcpclient",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev-frontend": "pnpm i && next dev --turbopack",
+    "dev-agent-js": "cd agent-js && pnpm i && langgraphjs dev --host 0.0.0.0 --port 8123 --no-browser",
+    "dev-agent-py": "cd agent && poetry install && poetry run langgraph dev --host 0.0.0.0 --port 8123 --no-browser",
+    "dev": "pnpx concurrently \"pnpm dev-frontend\" \"pnpm dev-agent-js\" --names ui,agent --prefix-colors blue,green",
+    "start:all": "concurrently \"pnpm start\" \"pnpm dev-agent-js\" --names ui,agent --prefix-colors blue,green",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@copilotkit/react-core": "^1.8.1",
+    "@copilotkit/react-ui": "^1.8.1",
+    "@copilotkit/runtime": "^1.8.1",
+    "@modelcontextprotocol/sdk": "^1.7.0",
+    "antd": "^5.24.6",
+    "class-validator": "^0.14.1",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "dotenv": "^16.4.7",
+    "lodash": "^4.17.21",
+    "lucide-react": "^0.475.0",
+    "mermaid": "^11.6.0",
+    "next": "15.2.0-canary.73",
+    "node-fetch": "^3.3.2",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwind-merge": "^3.0.2",
+    "tailwindcss-animate": "^1.0.7",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4",
+    "@types/lodash": "^4.17.16",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "concurrently": "^9.1.2",
+    "eslint": "^9",
+    "eslint-config-next": "15.2.0-canary.73",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  },
+  "packageManager": "pnpm@9.15.3"
+}
