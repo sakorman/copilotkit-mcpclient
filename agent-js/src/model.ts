@@ -10,7 +10,7 @@ import { ChatMistralAI } from "@langchain/mistralai";
 // import { HttpsProxyAgent } from "https-proxy-agent";
 
 // todo test agentProxy
-// const agentProxy = new HttpsProxyAgent("http://127.0.0.1:7897");
+// const agentProxy = new HttpsProxyAgent("http://127.0.0.1:7890");
 
 function getModel(state: AgentState): BaseChatModel {
   /**
@@ -31,7 +31,7 @@ function getModel(state: AgentState): BaseChatModel {
       temperature: 0,
       model: model || "gpt-4o",
       apiKey: stateApiKey || undefined,
-    }
+    },
       // {
       //   httpAgent: agentProxy,
       // }
