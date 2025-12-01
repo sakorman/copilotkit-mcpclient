@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import { useCoAgent } from "@copilotkit/react-core";
-import { ExampleConfigs } from "./ExampleConfigs";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import { Undo2 } from "lucide-react";
 import { attempt, isEmpty, isError, omit } from "lodash";
@@ -139,26 +138,6 @@ export function MCPConfigForm() {
       setIsLoading(false);
     }
   }, [agentState]);
-
-  const handleExampleConfig = (exampleConfig: Record<string, ServerConfig>) => {
-    // Merge the example with existing configs or replace them based on user preference
-    if (Object.keys(configs).length > 0) {
-      const shouldReplace = window.confirm(
-        "Do you want to replace your current configuration with this example? Click 'OK' to replace, or 'Cancel' to merge."
-      );
-
-      if (shouldReplace) {
-        setConfigs(exampleConfig);
-      } else {
-        setConfigs({ ...configs, ...exampleConfig });
-      }
-    } else {
-      setConfigs(exampleConfig);
-    }
-
-    // Close the examples panel after selection
-    setShowExampleConfigs(false);
-  };
 
   const addConfig = () => {
     if (!serverName) return;
@@ -483,12 +462,6 @@ export function MCPConfigForm() {
             />
           </svg>
         </button>
-
-        {showExampleConfigs && (
-          <div className="mt-2">
-            <ExampleConfigs onSelectConfig={handleExampleConfig} />
-          </div>
-        )}
       </div>
 
       {/* Server List */}

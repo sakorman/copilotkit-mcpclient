@@ -1,6 +1,6 @@
 {
   "name": "copilotkit-mcpclient",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "scripts": {
     "dev-frontend": "pnpm i && next dev --turbopack",
@@ -45,5 +45,5 @@
     "tailwindcss": "^4",
     "typescript": "^5"
   },
-  "packageManager": "pnpm@9.15.3"
+  "packageManager": "pnpm@10.24.0"
 }

@@ -15,20 +15,6 @@ Add the following inside `.env` at the root:
 LANGSMITH_API_KEY=lsv2_...
 ```
 
-Next, create another `.env` file inside the `agent` folder:
-
-```sh
-cd agent
-touch .env
-```
-
-Add the following inside `agent/.env`:
-
-```sh
-OPENAI_API_KEY=sk-...
-LANGSMITH_API_KEY=lsv2_...
-```
-
 ## Development
 
 We recommend running the **frontend and agent separately** in different terminals to debug errors and logs:
@@ -38,7 +24,7 @@ We recommend running the **frontend and agent separately** in different terminal
 pnpm run dev-frontend
 
 # Terminal 2 - Agent
-pnpm run dev-agent
+pnpm run dev-agent-js
 ```
 
 Alternatively, you can run both services together with:
