@@ -3,7 +3,6 @@
  * It defines the workflow graph, state, tools, nodes and edges.
  */
 
-import { RunnableConfig } from "@langchain/core/runnables";
 import {
   MemorySaver,
   START,
@@ -12,7 +11,7 @@ import {
   END,
 } from "@langchain/langgraph";
 import { createReactAgent } from "@langchain/langgraph/prebuilt";
-import { Connection, MultiServerMCPClient } from "@langchain/mcp-adapters";
+import { MultiServerMCPClient } from "@langchain/mcp-adapters";
 import { convertActionsToDynamicStructuredTools } from "@copilotkit/sdk-js/langgraph";
 import isEqual from "lodash/isEqual";
 import { AgentState, AgentStateAnnotation } from "./state";
@@ -20,31 +19,15 @@ import { getModel } from "./model";
 import { cacheAllTopicHistoryData } from "./db/cacheHistoryData";
 import { getDefaultTools } from "./tools";
 
-// 判断操作系统
-const isWindows = process.platform === "win32";
-
-const DEFAULT_MCP_CONFIG: Record<string, Connection> = {
-  supos: {
-    command: isWindows ? "npx.cmd" : "npx",
-    args: ["-y", "mcp-server-supos"],
-    env: {
-      SUPOS_API_URL: process.env.SUPOS_API_URL || "",
-      SUPOS_API_KEY: process.env.SUPOS_API_KEY || "",
-      SUPOS_MQTT_URL: process.env.SUPOS_MQTT_URL || "",
-    },
-    transport: "stdio",
-  },
-};
-
 let latestMcpConfig: any = {};
 let currentClient: any = null;
 let mcpTools: any = [];
 
-async function chat_node(state: AgentState, config: RunnableConfig) {
+async function chat_node(state: AgentState) {
   // 1 Define the model, lower temperature for deterministic responses
   const model = getModel(state);
 
-  const mcpConfig: any = { ...DEFAULT_MCP_CONFIG, ...(state.mcp_config || {}) };
+  const mcpConfig: any = { ...(state.mcp_config || {}) };
 
   console.log("****mcpConfig****", mcpConfig);
 

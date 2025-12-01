@@ -7,10 +7,10 @@ import { ChatOpenAI } from "@langchain/openai";
 import { ChatAnthropic } from "@langchain/anthropic";
 import { ChatMistralAI } from "@langchain/mistralai";
 // import { ChatGoogleGenerativeAI } from "@langchain/google-genai";
-// import { HttpsProxyAgent } from "https-proxy-agent";
+import { HttpsProxyAgent } from "https-proxy-agent";
 
 // todo test agentProxy
-// const agentProxy = new HttpsProxyAgent("http://127.0.0.1:7890");
+const agentProxy = new HttpsProxyAgent("http://127.0.0.1:7897");
 
 function getModel(state: AgentState): BaseChatModel {
   /**
@@ -32,9 +32,9 @@ function getModel(state: AgentState): BaseChatModel {
       model: model || "gpt-4o",
       apiKey: stateApiKey || undefined,
     },
-      // {
-      //   httpAgent: agentProxy,
-      // }
+      {
+        httpAgent: agentProxy,
+      }
     );
   }
   if (stateModelSdk === "anthropic") {
