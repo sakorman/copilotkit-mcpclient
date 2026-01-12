@@ -50,6 +50,9 @@ importers:
       node-fetch:
         specifier: ^3.3.2
         version: 3.3.2
+      pnpm:
+        specifier: ^10.25.0
+        version: 10.25.0
       react:
         specifier: ^19.0.0
         version: 19.0.0
@@ -3543,6 +3546,11 @@ packages:
   playwright@1.50.1:
     resolution: {integrity: sha512-G8rwsOQJ63XG6BbKj2w5rHeavFjy5zynBA9zsJMMtBoe/Uf757oG12NXz6e6OirF7RCrTVAKFXbLmn1RbL7Qaw==}
     engines: {node: '>=18'}
+    hasBin: true
+
+  pnpm@10.25.0:
+    resolution: {integrity: sha512-XoJjkCevN8+DIGG8xtY5whljRIjg8rrr54UCink957Ul/80/f/V09emGBlTgmP6FK6isXdXO/hdn0joCCpL1AQ==}
+    engines: {node: '>=18.12'}
     hasBin: true
 
   points-on-curve@0.2.0:
@@ -8476,6 +8484,8 @@ snapshots:
       playwright-core: 1.50.1
     optionalDependencies:
       fsevents: 2.3.2
+
+  pnpm@10.25.0: {}
 
   points-on-curve@0.2.0: {}
 
