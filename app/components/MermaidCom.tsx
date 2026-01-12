@@ -31,9 +31,9 @@ const Mermaid = ({ code }: { code: string }) => {
     }
   }, [code]);
 
-  // useEffect(() => {
-  //   // mermaid.contentLoaded();
-  // }, []);
+  useEffect(() => {
+    mermaid.contentLoaded();
+  }, []);
 
   return (
     <div>
